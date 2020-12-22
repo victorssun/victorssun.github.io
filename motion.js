@@ -1,8 +1,14 @@
 
 var canvas = document.getElementById("motion-js");
 var ctx = canvas.getContext("2d");
+
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+var body = document.body,
+    html = document.documentElement;
+canvas.height = Math.max( body.scrollHeight, body.offsetHeight,
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+//canvas.height = window.innerHeight;
+
 var particles = [];
 var num_particles = 1000;
 
@@ -16,7 +22,7 @@ function GetRandomColor() {
         b = Math.floor(Math.random() * 256);
     }
 
-    return "rgb(" + r + "," + g + ","  + b + ")";
+    return "rgb(" + r + "," + g + ","  + b + "," + 0.90 +")";
 }
 // particle start at random position, velocity, colour
 var Particle = function () {
